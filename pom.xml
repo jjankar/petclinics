@@ -24,6 +24,9 @@
       <jacoco.utAgentConfig>-javaagent:${jacoco.path}=destfile=${jacoco.utReport}</jacoco.utAgentConfig>
       <jacoco-listeners.version>3.5</jacoco-listeners.version>
 
+      <!-- Java EE / Java SE dependencies -->
+      <tomcat.version>7.0.59</tomcat.version>
+
       <!--End of Yellow properties-->
 
     <!-- Generic properties -->
@@ -61,6 +64,25 @@
           <scope>test</scope>
       </dependency>
 
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-servlet-api</artifactId>
+          <version>${tomcat.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-jasper-el</artifactId>
+          <version>${tomcat.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.tomcat</groupId>
+          <artifactId>tomcat-jdbc</artifactId>
+          <scope>runtime</scope>
+      </dependency>
 
 
       <!--End of Yellow dependencies-->
@@ -192,6 +214,16 @@
             </configuration>
         </plugin>
 
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+                <server>tomcat-development-server</server>
+                <port>9966</port>
+                <path>/petclinic</path>
+            </configuration>
+        </plugin>
 
 
 
